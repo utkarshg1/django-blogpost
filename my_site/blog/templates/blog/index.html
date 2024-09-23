@@ -6,22 +6,15 @@
 {% endblock %} 
 
 {% block css_files %}
+  <link rel="stylesheet" href="{% static "blog/post.css" %}">
   <link rel="stylesheet" href="{% static "blog/index.css" %}">
 {% endblock  %}
 
 {% block content %}
-<header id="main-navigation">
-  <h1>
-    <a href="">Utkarsh's Blog</a>
-  </h1>
-  <nav>
-    <a href="">All Posts</a>
-  </nav>
-</header>
 
 <section id="welcome">
   <header>
-    <img src="" alt="Utkarsh Gaikwad - The author of this blog" />
+    <img src="{% static "blog/images/Utkarsh.jpeg" %}" alt="Utkarsh Gaikwad - The author of this blog" />
     <h2>Utkarsh Gaikwad's Blog</h2>
   </header>
   <p>Hi I am Utkarsh Gaikwad and I like to blog about tech and programming</p>
@@ -30,21 +23,7 @@
 <section id="latest-posts">
   <h2>My Latest Thoughts</h2>
   <ul>
-    <li>
-      <article class="post">
-        <a href="">
-          <img src="" alt="Cycling from home to Lonavala" />
-        </a>
-        <div class="post__content">
-          <h3>Cycling from home to Lonavala</h3>
-          <p>
-            Conquering nearly 100 kilometers, my cycling journey from home to
-            Lonavala was a true test of endurance, strength, and passion for
-            adventure.
-          </p>
-        </div>
-      </article>
-    </li>
+    {% include "blog/includes/post.html" %}
   </ul>
 </section>
 
