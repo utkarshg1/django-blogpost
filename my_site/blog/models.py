@@ -5,11 +5,20 @@ from django.core.validators import MinLengthValidator
 class Tag(models.Model):
     caption = models.CharField(max_length=20)
 
+    def __str__(self) -> str:
+        return self.caption
+
 
 class Author(models.Model):
     first_name = models.CharField(max_length=80)
     last_name = models.CharField(max_length=80)
     email = models.EmailField(unique=True)
+
+    def full_name(self) -> str:
+        return f"{self.first_name} {self.last_name}"
+
+    def __str__(self) -> str:
+        return self.full_name()
 
 
 class Post(models.Model):
@@ -22,3 +31,6 @@ class Post(models.Model):
     author = models.ForeignKey(
         Author, on_delete=models.SET_NULL, null=True, related_name="posts")
     tags = models.ManyToManyField(Tag)
+
+    def __str__(self) -> str:
+        return f"{self.title} By {self.author.full_name()}"
